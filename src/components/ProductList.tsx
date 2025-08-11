@@ -23,6 +23,7 @@ import {
   MoreVertical
 } from "lucide-react";
 import { AIAnalysisService } from "@/services/aiAnalysisService";
+import galaxyA54 from "@/assets/smartphone-galaxy-a54.jpg";
 
 const ProductCard = ({ 
   id, 
@@ -82,7 +83,19 @@ const ProductCard = ({
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center overflow-hidden">
-              <ShoppingCart className="h-6 w-6 text-muted-foreground" />
+              {image ? (
+                <img
+                  src={image}
+                  alt={`Imagem do produto: ${title}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = '/placeholder.svg'
+                  }}
+                />
+              ) : (
+                <ShoppingCart className="h-6 w-6 text-muted-foreground" />
+              )}
             </div>
             <div>
               <CardTitle className="text-sm font-medium line-clamp-2 group-hover:text-primary transition-colors">
@@ -182,7 +195,7 @@ export const ProductList = () => {
       ranking: 3,
       aiScore: 85,
       alerts: 0,
-      image: ""
+      image: galaxyA54
     },
     {
       id: "2", 
