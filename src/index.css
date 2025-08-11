@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SaaS Estratégico MercadoLivre - Design System */
+
+@layer base {
+  :root {
+    /* Light mode colors */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Primary - Growth Green */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 142 76% 46%;
+
+    /* Secondary - Data Blue */
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted */
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 45%;
+
+    /* Accent - AI Purple */
+    --accent: 263 70% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Success/Growth */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    /* Warning */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders and inputs */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142 76% 36%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-ai: linear-gradient(135deg, hsl(var(--accent)), hsl(263 70% 60%));
+    --gradient-data: linear-gradient(135deg, hsl(var(--secondary)), hsl(217 91% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 46%));
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.15);
+    --shadow-ai: 0 0 40px hsl(var(--accent) / 0.15);
+    --shadow-card: 0 8px 30px hsl(0 0% 0% / 0.12);
+
+    /* Glass effect */
+    --glass-bg: hsl(0 0% 100% / 0.8);
+    --glass-border: hsl(240 10% 3.9% / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius: 0.75rem;
+
+    /* Sidebar light mode */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 142 76% 46%;
+
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 263 70% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142 76% 36%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-ai: linear-gradient(135deg, hsl(var(--accent)), hsl(263 70% 60%));
+    --gradient-data: linear-gradient(135deg, hsl(var(--secondary)), hsl(217 91% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 46%));
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.15);
+    --shadow-ai: 0 0 40px hsl(var(--accent) / 0.15);
+    --shadow-card: 0 8px 30px hsl(0 0% 0% / 0.12);
+
+    /* Glass effect */
+    --glass-bg: hsl(240 10% 3.9% / 0.8);
+    --glass-border: hsl(0 0% 98% / 0.1);
+
+    /* Sidebar dark mode */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
