@@ -21,6 +21,8 @@ import {
   Lightbulb,
   Sparkles
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { AIAnalysisService } from "@/services/aiAnalysisService";
 
 const DiagnosticCard = ({ 
   title, 

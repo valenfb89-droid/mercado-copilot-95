@@ -57,6 +57,30 @@ const CompetitorCard = ({
     'deepseek-v2'
   );
 
+  // Cálculo de vantagem de preço e diferença percentual
+  const priceAdvantage = ourPrice < price;
+  const priceDiffPercent = price > 0 ? Math.round(Math.abs(((price - ourPrice) / price) * 100)) : 0;
+
+  // Ação de análise por concorrente
+  const handleAnalyze = async () => {
+    const model = getDefaultModel() as string;
+    setIsAnalyzing(true);
+    toast({ title: `Analisando ${name}...` });
+    try {
+      await AIAnalysisService.executeAnalysis({
+        model,
+        analysisType: 'benchmarking',
+        prompt: `Analise o concorrente ${name} comparando com nosso produto atual. Foque em preço, reputação e oportunidades.`,
+        productData: { competitor: name, price, ourPrice, ranking }
+      });
+      toast({ title: 'Análise concluída' });
+    } catch (e: any) {
+      toast({ title: 'Erro', description: e.message || 'Falha ao analisar concorrente', variant: 'destructive' });
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
   return (
     <Card className="hover:shadow-card transition-all duration-200">
       <CardHeader>
