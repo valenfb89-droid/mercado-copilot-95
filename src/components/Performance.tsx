@@ -142,35 +142,7 @@ const ProductPerformanceCard = ({
 );
 
 export const Performance = () => {
-  const topProducts = [
-    {
-      name: "Smartphone Samsung Galaxy A54 128GB 5G",
-      revenue: 61203,
-      sales: 47,
-      views: 2847,
-      conversion: 1.7,
-      growth: 12.3,
-      ranking: 3
-    },
-    {
-      name: "Fone de Ouvido Bluetooth JBL Tune 510BT",
-      revenue: 4577,
-      sales: 23,
-      views: 1205,
-      conversion: 1.9,
-      growth: 8.7,
-      ranking: 7
-    },
-    {
-      name: "Notebook Lenovo IdeaPad 3i Intel Core i5",
-      revenue: 29988,
-      sales: 12,
-      views: 956,
-      conversion: 1.3,
-      growth: -5.2,
-      ranking: 12
-    }
-  ];
+  const topProducts: any[] = [];
 
   return (
     <div className="space-y-6">
@@ -202,38 +174,38 @@ export const Performance = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
           title="Receita Total"
-          current="R$ 95.768"
-          previous="R$ 78.234"
-          change="+R$ 17.534"
-          changePercent="+22.4%"
-          trend="up"
+          current="--"
+          previous="--"
+          change="--"
+          changePercent="--"
+          trend="stable"
           icon={DollarSign}
         />
         <MetricCard
           title="Total de Vendas"
-          current="82"
-          previous="71"
-          change="+11"
-          changePercent="+15.5%"
-          trend="up"
+          current="--"
+          previous="--"
+          change="--"
+          changePercent="--"
+          trend="stable"
           icon={ShoppingCart}
         />
         <MetricCard
           title="Visitas Totais"
-          current="5.008"
-          previous="4.203"
-          change="+805"
-          changePercent="+19.1%"
-          trend="up"
+          current="--"
+          previous="--"
+          change="--"
+          changePercent="--"
+          trend="stable"
           icon={Eye}
         />
         <MetricCard
           title="Taxa Conversão Média"
-          current="1.64%"
-          previous="1.69%"
-          change="-0.05%"
-          changePercent="-3.0%"
-          trend="down"
+          current="--"
+          previous="--"
+          change="--"
+          changePercent="--"
+          trend="stable"
           icon={Target}
         />
       </div>
@@ -287,7 +259,7 @@ export const Performance = () => {
                   <Star className="h-4 w-4 text-primary" />
                   <div>
                     <h4 className="font-medium text-sm">Produto Star</h4>
-                    <p className="text-xs text-muted-foreground">Galaxy A54: 64% da receita</p>
+                    <p className="text-xs text-muted-foreground">Conecte para ver</p>
                   </div>
                 </div>
               </CardContent>

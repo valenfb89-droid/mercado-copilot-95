@@ -68,24 +68,13 @@ export const MLIntegrationCard = ({
       // const { authUrl } = await response.json();
       // window.location.href = authUrl;
       
-      // Mock para demonstração
-      setTimeout(() => {
-        onStatusChange('connected');
-        onUserInfoUpdate({
-          id: '12345',
-          nickname: 'LOJA_TECH_STORE',
-          email: 'contato@lojatech.com.br',
-          country_id: 'BR',
-          site_status: 'active'
-        });
-        onSyncUpdate(new Date().toISOString());
-        setIsLoading(false);
-        
-        toast({
-          title: "Integração concluída!",
-          description: "Sua conta do Mercado Livre foi conectada com sucesso.",
-        });
-      }, 2000);
+      // Integração desabilitada sem backend
+      toast({
+        title: "Integração indisponível",
+        description: "Conecte o backend para habilitar o OAuth do Mercado Livre.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
       
     } catch (error) {
       console.error('Erro na integração:', error);
@@ -115,16 +104,13 @@ export const MLIntegrationCard = ({
     setIsLoading(true);
     
     try {
-      // TODO: Implementar sincronização real
-      setTimeout(() => {
-        onSyncUpdate(new Date().toISOString());
-        setIsLoading(false);
-        
-        toast({
-          title: "Sincronização concluída",
-          description: "Seus produtos foram atualizados com sucesso.",
-        });
-      }, 3000);
+      // Sincronização desabilitada sem backend
+      setIsLoading(false);
+      toast({
+        title: "Sincronização indisponível",
+        description: "Conecte o backend para sincronizar seus dados.",
+        variant: "destructive",
+      });
       
     } catch (error) {
       console.error('Erro na sincronização:', error);

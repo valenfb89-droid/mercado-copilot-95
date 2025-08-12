@@ -26,49 +26,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-// Simulação de dados de análise
-const MOCK_ANALYSIS_RESULTS = {
-  diagnosis: {
-    title: "Diagnóstico Estratégico Completo",
-    status: "completed",
-    timestamp: "Há 5 min",
-    model: "GPT-4o",
-    insights: [
-      "Título possui apenas 42% das palavras-chave ideais para ranking",
-      "Preço 15% acima da média dos concorrentes top 3",
-      "Descrição não explora 3 benefícios identificados pela IA",
-      "Faltam 2 atributos críticos que concorrentes usam"
-    ],
-    score: 67,
-    priority: "high" as const
-  },
-  copywriting: {
-    title: "Otimização de Copy & SEO",
-    status: "pending",
-    timestamp: "Aguardando",
-    model: "GPT-4o",
-    suggestions: [
-      "Novo título: 'Smartphone Samsung Galaxy A54 5G 128GB Tela 6.4' Camera 50MP'",
-      "Descrição otimizada com 8 palavras-chave adicionais",
-      "3 variações de texto para teste A/B"
-    ],
-    estimatedImpact: "+23% visibilidade",
-    priority: "medium" as const
-  },
-  benchmarking: {
-    title: "Análise Competitiva",
-    status: "completed", 
-    timestamp: "Há 12 min",
-    model: "DeepSeek-V2",
-    competitors: [
-      { name: "TechStore", position: 1, advantage: "Preço -R$50" },
-      { name: "MobileX", position: 2, advantage: "Melhor review" },
-      { name: "GadgetPro", position: 3, advantage: "Frete grátis" }
-    ],
-    opportunities: "3 oportunidades de melhoria identificadas",
-    priority: "high" as const
-  }
-};
+// Resultados mock removidos
 
 interface AnalysisResultProps {
   type: AnalysisType;
@@ -250,20 +208,11 @@ export const AIAnalysisPanel = () => {
     setExecutingAnalysis(prev => ({ ...prev, [type]: true }));
 
     try {
-      // Dados mockados do produto para demonstração
-      const mockProductData = {
-        title: "Smartphone Samsung Galaxy A54 5G 128GB",
-        price: 1299.99,
-        description: "Smartphone com tela de 6.4 polegadas...",
-        category: "Celulares e Smartphones",
-        brand: "Samsung"
-      };
-
       const request: AIAnalysisRequest = {
         model: selectedModel,
-        prompt: `Realize uma análise ${type} detalhada para este produto do Mercado Livre.`,
+        prompt: `Realize uma análise ${type} detalhada.`,
         analysisType: type,
-        productData: mockProductData
+        productData: undefined
       };
 
       const result = await AIAnalysisService.executeAnalysis(request);
@@ -430,11 +379,6 @@ export const AIAnalysisPanel = () => {
                     type={type} 
                     result={analysisResults[type]} 
                   />
-                ) : MOCK_ANALYSIS_RESULTS[type] ? (
-                  <AnalysisResult 
-                    type={type} 
-                    result={MOCK_ANALYSIS_RESULTS[type]} 
-                  />
                 ) : (
                   <Card>
                     <CardContent className="flex flex-col items-center justify-center py-12 text-center">
@@ -472,7 +416,7 @@ export const AIAnalysisPanel = () => {
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {(Object.entries(MOCK_ANALYSIS_RESULTS) as [AnalysisType, any][]).map(([type, _]) => {
+            {(['diagnosis','copywriting','benchmarking','simulation','automation'] as AnalysisType[]).map((type) => {
               const selectedModelId = getSelectedModel(type);
               const analysisConfig = {
                 diagnosis: { name: "Diagnóstico", icon: Target, color: "text-red-500" },

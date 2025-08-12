@@ -200,74 +200,7 @@ const RuleBuilder = () => {
 };
 
 export const Automations = () => {
-  const automations = [
-    {
-      title: "Ajuste Competitivo de Preços",
-      description: "Monitora concorrentes e ajusta preços automaticamente para manter competitividade",
-      status: "active" as const,
-      trigger: "Mudança de preço concorrente",
-      frequency: "Tempo real",
-      lastRun: "Há 2h",
-      success: 94,
-      impact: "+12%",
-      actions: 47
-    },
-    {
-      title: "Otimização de SEO por IA",
-      description: "Atualiza títulos e descrições baseado em tendências de busca e performance",
-      status: "active" as const,
-      trigger: "Insight de SEO",
-      frequency: "Diário",
-      lastRun: "Hoje",
-      success: 87,
-      impact: "+18%",
-      actions: 23
-    },
-    {
-      title: "Alerta de Estoque Crítico",
-      description: "Notifica quando estoque está baixo e sugere ações para evitar ruptura",
-      status: "active" as const,
-      trigger: "Estoque < 10 unidades",
-      frequency: "Tempo real",
-      lastRun: "Ontem",
-      success: 100,
-      impact: "0",
-      actions: 5
-    },
-    {
-      title: "Resposta Automática de Perguntas",
-      description: "IA responde perguntas frequentes dos clientes usando base de conhecimento",
-      status: "paused" as const,
-      trigger: "Nova pergunta",
-      frequency: "Tempo real",
-      lastRun: "Há 3 dias",
-      success: 76,
-      impact: "+8%",
-      actions: 156
-    },
-    {
-      title: "Promoção Inteligente",
-      description: "Cria promoções automáticas baseadas em sazonalidade e concorrência",
-      status: "error" as const,
-      trigger: "Padrão sazonal",
-      frequency: "Semanal",
-      lastRun: "Erro",
-      success: 45,
-      impact: "-2%",
-      actions: 3
-    },
-    {
-      title: "Cross-sell Automático",
-      description: "Sugere produtos complementares baseado em histórico de compras",
-      status: "active" as const,
-      trigger: "Nova venda",
-      frequency: "Tempo real",
-      lastRun: "Há 1h",
-      success: 89,
-      impact: "+15%",
-      actions: 89
-    }
-  ];
+  const automations: any[] = [];
 
   return (
     <div className="space-y-6">
@@ -310,7 +243,7 @@ export const Automations = () => {
             <div className="flex items-center space-x-2">
               <Target className="h-4 w-4 text-success" />
               <div>
-                <div className="text-2xl font-bold">324</div>
+                <div className="text-2xl font-bold">0</div>
                 <div className="text-xs text-muted-foreground">Ações Executadas</div>
               </div>
             </div>
@@ -322,7 +255,7 @@ export const Automations = () => {
             <div className="flex items-center space-x-2">
               <TrendingUp className="h-4 w-4 text-primary" />
               <div>
-                <div className="text-2xl font-bold">89%</div>
+                <div className="text-2xl font-bold">--</div>
                 <div className="text-xs text-muted-foreground">Taxa de Sucesso</div>
               </div>
             </div>
@@ -334,7 +267,7 @@ export const Automations = () => {
             <div className="flex items-center space-x-2">
               <DollarSign className="h-4 w-4 text-success" />
               <div>
-                <div className="text-2xl font-bold">+23%</div>
+                <div className="text-2xl font-bold">--</div>
                 <div className="text-xs text-muted-foreground">ROI Automações</div>
               </div>
             </div>
@@ -364,53 +297,7 @@ export const Automations = () => {
         </TabsContent>
 
         <TabsContent value="templates" className="space-y-6">
-          <div className="grid gap-4 lg:grid-cols-2">
-            {[
-              {
-                name: "Monitoramento de Concorrentes",
-                description: "Acompanha preços e ações da concorrência automaticamente",
-                category: "Competição",
-                uses: 1250
-              },
-              {
-                name: "Otimização de Estoque",
-                description: "Gerencia níveis de estoque baseado em vendas e sazonalidade",
-                category: "Estoque", 
-                uses: 890
-              },
-              {
-                name: "SEO Automático",
-                description: "Melhora títulos e descrições baseado em performance",
-                category: "SEO",
-                uses: 2100
-              },
-              {
-                name: "Pricing Dinâmico",
-                description: "Ajusta preços baseado em demanda e concorrência",
-                category: "Preço",
-                uses: 1670
-              }
-            ].map((template, idx) => (
-              <Card key={idx} className="hover:shadow-card transition-all cursor-pointer">
-                <CardContent className="p-4">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h4 className="font-medium">{template.name}</h4>
-                      <p className="text-sm text-muted-foreground mt-1">{template.description}</p>
-                      <div className="flex items-center space-x-2 mt-2">
-                        <Badge variant="outline">{template.category}</Badge>
-                        <span className="text-xs text-muted-foreground">{template.uses} usos</span>
-                      </div>
-                    </div>
-                    <Button size="sm">
-                      <Plus className="mr-2 h-3 w-3" />
-                      Usar
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <div className="p-6 text-center text-sm text-muted-foreground">Nenhum template disponível.</div>
         </TabsContent>
 
         <TabsContent value="logs" className="space-y-6">
@@ -420,62 +307,7 @@ export const Automations = () => {
               <CardDescription>Últimas 48 horas</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                {[
-                  {
-                    time: "Há 2h",
-                    automation: "Ajuste Competitivo de Preços",
-                    action: "Reduziu preço do Galaxy A54 para R$ 1.249",
-                    status: "success",
-                    impact: "+5% vendas"
-                  },
-                  {
-                    time: "Há 4h",
-                    automation: "Otimização de SEO",
-                    action: "Atualizou título do Fone JBL",
-                    status: "success",
-                    impact: "+12% visibilidade"
-                  },
-                  {
-                    time: "Há 6h",
-                    automation: "Alerta de Estoque",
-                    action: "Enviou notificação - Notebook baixo estoque",
-                    status: "success",
-                    impact: "Alerta enviado"
-                  },
-                  {
-                    time: "Há 8h",
-                    automation: "Promoção Inteligente",
-                    action: "Tentou criar promoção sazonal",
-                    status: "error",
-                    impact: "Falha na API"
-                  }
-                ].map((log, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-muted/20 rounded-lg">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center space-x-2">
-                        {log.status === "success" ? (
-                          <CheckCircle className="h-4 w-4 text-success" />
-                        ) : (
-                          <AlertTriangle className="h-4 w-4 text-destructive" />
-                        )}
-                        <span className="text-sm text-muted-foreground">{log.time}</span>
-                      </div>
-                      <div>
-                        <div className="font-medium text-sm">{log.automation}</div>
-                        <div className="text-xs text-muted-foreground">{log.action}</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className={`text-sm font-medium ${
-                        log.status === "success" ? "text-success" : "text-destructive"
-                      }`}>
-                        {log.impact}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <div className="text-sm text-muted-foreground text-center py-6">Sem logs de automações ainda.</div>
             </CardContent>
           </Card>
         </TabsContent>

@@ -39,12 +39,11 @@ const Settings = () => {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
 
-  // Estados para os formulários
   const [profile, setProfile] = useState({
-    name: "João Silva",
-    email: "joao@exemplo.com",
-    company: "Tech Store Ltda",
-    bio: "Especialista em e-commerce com foco em marketplaces",
+    name: "",
+    email: "",
+    company: "",
+    bio: "",
     timezone: "America/Sao_Paulo",
     language: "pt-BR"
   });

@@ -184,44 +184,7 @@ const ProductCard = ({
 export const ProductList = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const [products, setProducts] = useState([
-    {
-      id: "1",
-      title: "Smartphone Samsung Galaxy A54 128GB 5G Câmera Tripla",
-      price: 1299,
-      sales: 47,
-      views: 2843,
-      conversion: 1.7,
-      ranking: 3,
-      aiScore: 85,
-      alerts: 0,
-      image: galaxyA54
-    },
-    {
-      id: "2", 
-      title: "Fone de Ouvido Bluetooth JBL Tune 510BT Wireless",
-      price: 199,
-      sales: 23,
-      views: 1205,
-      conversion: 1.9,
-      ranking: 7,
-      aiScore: 72,
-      alerts: 1,
-      image: ""
-    },
-    {
-      id: "3",
-      title: "Notebook Lenovo IdeaPad 3i Intel Core i5 8GB 256GB SSD",
-      price: 2499,
-      sales: 12,
-      views: 956,
-      conversion: 1.3,
-      ranking: 12,
-      aiScore: 45,
-      alerts: 3,
-      image: ""
-    }
-  ]);
+  const [products, setProducts] = useState([] as any[]);
 
   const [isLoading, setIsLoading] = useState(true);
   const [executingId, setExecutingId] = useState<string | null>(null);
@@ -313,7 +276,7 @@ export const ProductList = () => {
             <div className="flex items-center space-x-2">
               <ShoppingCart className="h-4 w-4 text-primary" />
               <div>
-                <div className="text-2xl font-bold">3</div>
+                <div className="text-2xl font-bold">{products.length}</div>
                 <div className="text-xs text-muted-foreground">Produtos Ativos</div>
               </div>
             </div>
@@ -325,7 +288,7 @@ export const ProductList = () => {
             <div className="flex items-center space-x-2">
               <AlertTriangle className="h-4 w-4 text-warning" />
               <div>
-                <div className="text-2xl font-bold">4</div>
+                <div className="text-2xl font-bold">0</div>
                 <div className="text-xs text-muted-foreground">Alertas Ativos</div>
               </div>
             </div>
@@ -337,7 +300,7 @@ export const ProductList = () => {
             <div className="flex items-center space-x-2">
               <Brain className="h-4 w-4 text-accent" />
               <div>
-                <div className="text-2xl font-bold">67%</div>
+                <div className="text-2xl font-bold">--</div>
                 <div className="text-xs text-muted-foreground">Score IA Médio</div>
               </div>
             </div>
@@ -349,7 +312,7 @@ export const ProductList = () => {
             <div className="flex items-center space-x-2">
               <TrendingUp className="h-4 w-4 text-success" />
               <div>
-                <div className="text-2xl font-bold">+23%</div>
+                <div className="text-2xl font-bold">--</div>
                 <div className="text-xs text-muted-foreground">Crescimento</div>
               </div>
             </div>

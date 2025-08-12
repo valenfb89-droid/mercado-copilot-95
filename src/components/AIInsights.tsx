@@ -172,74 +172,7 @@ const QuickStat = ({ icon: Icon, label, value, trend, trendValue }: {
 );
 
 export const AIInsights = () => {
-  const insights = [
-    {
-      title: "Oportunidade de SEO em Títulos",
-      category: "SEO" as const,
-      priority: "high" as const,
-      confidence: 87,
-      impact: "+23% visibilidade",
-      description: "IA detectou 15 produtos com títulos sub-otimizados que podem melhorar ranking significativamente.",
-      reasoning: "Análise de 50.000+ anúncios similares mostra que palavras-chave específicas aumentam CTR em média 23%. Concorrentes não estão usando essas palavras.",
-      actionable: true,
-      timeframe: "2-3 dias"
-    },
-    {
-      title: "Janela de Precificação Agressiva",
-      category: "Pricing" as const,
-      priority: "critical" as const,
-      confidence: 92,
-      impact: "+34% vendas estimadas",
-      description: "Momento ideal para reduzir preços em 5-8% sem perder margem significativa.",
-      reasoning: "Algoritmo detectou padrão sazonal: concorrentes historicamente aumentam preços em 2 semanas. Agir agora garante vantagem competitiva temporária.",
-      actionable: true,
-      timeframe: "24-48h"
-    },
-    {
-      title: "Novo Nicho Emergente Detectado",
-      category: "Market" as const,
-      priority: "medium" as const,
-      confidence: 78,
-      impact: "Potencial novo mercado",
-      description: "IA identificou crescimento de 340% em buscas por 'smartphones gaming' na sua categoria.",
-      reasoning: "Correlação entre alta de criptomoedas e compras de dispositivos gaming. Tendência crescente em fóruns especializados e redes sociais.",
-      actionable: false,
-      timeframe: "Médio prazo"
-    },
-    {
-      title: "Concorrente Vulnerável",
-      category: "Competition" as const,
-      priority: "high" as const,
-      confidence: 85,
-      impact: "+12% market share",
-      description: "TechStore Premium perdeu 15% das vendas na última semana. Oportunidade de capturar clientes.",
-      reasoning: "Análise de reviews mostra problemas de estoque e entrega. Histórico indica que recuperação leva 2-3 semanas. Janela para ataque competitivo.",
-      actionable: true,
-      timeframe: "Esta semana"
-    },
-    {
-      title: "Padrão Sazonal Identificado", 
-      category: "Performance" as const,
-      priority: "medium" as const,
-      confidence: 91,
-      impact: "Otimização de estoque",
-      description: "IA prevê pico de vendas em 12 dias baseado em padrões históricos e tendências do mercado.",
-      reasoning: "Correlação forte (0.89) entre eventos macroeconômicos e comportamento de compra. Padrão se repete há 3 anos consecutivos com 91% de precisão.",
-      actionable: true,
-      timeframe: "10-14 dias"
-    },
-    {
-      title: "Oportunidade de Cross-selling",
-      category: "Market" as const,
-      priority: "low" as const,
-      confidence: 73,
-      impact: "+8% receita por cliente",
-      description: "Clientes que compram smartphones têm 67% chance de comprar capas e acessórios em 30 dias.",
-      reasoning: "Machine learning identificou padrão de compra: 67% dos compradores de smartphone buscam acessórios. Ofertar na pós-venda aumenta conversão.",
-      actionable: true,
-      timeframe: "Contínuo"
-    }
-  ];
+  const insights: any[] = [];
 
   return (
     <div className="space-y-6">
@@ -268,30 +201,30 @@ export const AIInsights = () => {
         <QuickStat
           icon={Lightbulb}
           label="Insights Ativos"
-          value="23"
-          trend="up"
-          trendValue="+5"
+          value="0"
+          trend="stable"
+          trendValue="0"
         />
         <QuickStat
           icon={Target}
           label="Ações Pendentes"
-          value="8"
-          trend="down"
-          trendValue="-2"
+          value="0"
+          trend="stable"
+          trendValue="0"
         />
         <QuickStat
           icon={CheckCircle}
           label="Aplicadas Hoje"
-          value="12"
-          trend="up"
-          trendValue="+8"
+          value="0"
+          trend="stable"
+          trendValue="0"
         />
         <QuickStat
           icon={BarChart3}
           label="Taxa Sucesso"
-          value="89%"
-          trend="up"
-          trendValue="+3%"
+          value="--"
+          trend="stable"
+          trendValue="0"
         />
       </div>
 
@@ -353,50 +286,7 @@ export const AIInsights = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {[
-                  {
-                    date: "Há 2 dias",
-                    action: "Otimização de título - Galaxy A54",
-                    result: "+18% visibilidade, +12% cliques",
-                    status: "success"
-                  },
-                  {
-                    date: "Há 5 dias", 
-                    action: "Ajuste de preço - Fone JBL",
-                    result: "+23% conversão, +R$ 890 receita",
-                    status: "success"
-                  },
-                  {
-                    date: "Há 1 semana",
-                    action: "Melhoria na descrição - Notebook Lenovo",
-                    result: "Aguardando resultados...",
-                    status: "pending"
-                  },
-                  {
-                    date: "Há 2 semanas",
-                    action: "Estratégia cross-selling",
-                    result: "+5% receita por cliente",
-                    status: "success"
-                  }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-muted/20 rounded-lg">
-                    <div>
-                      <div className="font-medium">{item.action}</div>
-                      <div className="text-sm text-muted-foreground">{item.date}</div>
-                    </div>
-                    <div className="text-right">
-                      <div className={`text-sm font-medium ${
-                        item.status === "success" ? "text-success" :
-                        item.status === "pending" ? "text-warning" : "text-muted-foreground"
-                      }`}>
-                        {item.result}
-                      </div>
-                      <Badge variant={item.status === "success" ? "default" : "secondary"}>
-                        {item.status === "success" ? "Sucesso" : "Pendente"}
-                      </Badge>
-                    </div>
-                  </div>
-                ))}
+                <div className="text-sm text-muted-foreground text-center py-6">Nenhum insight aplicado ainda.</div>
               </div>
             </CardContent>
           </Card>

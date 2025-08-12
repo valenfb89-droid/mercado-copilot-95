@@ -46,15 +46,9 @@ const MLCallback = () => {
         
         // const result = await response.json();
         
-        // Mock para demonstração
-        setTimeout(() => {
-          setStatus('success');
-          setMessage('Integração concluída com sucesso!');
-          setUserInfo({
-            nickname: 'LOJA_TECH_STORE',
-            email: 'contato@lojatech.com.br'
-          });
-        }, 2000);
+        // Integração desabilitada sem backend
+        setStatus('error');
+        setMessage('Integração indisponível sem backend configurado.');
 
       } catch (error) {
         console.error('Erro no callback:', error);

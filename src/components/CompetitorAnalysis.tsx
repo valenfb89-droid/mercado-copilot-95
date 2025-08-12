@@ -215,44 +215,7 @@ export const CompetitorAnalysis = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const { toast } = useToast();
   
-  const competitors = [
-    {
-      name: "TechStore Premium",
-      rating: 4.8,
-      sales: 156,
-      price: 1350,
-      ourPrice: 1299,
-      ranking: 1,
-      gap: "Ameaça",
-      strengths: ["Maior reputação", "Entrega mais rápida", "Melhor atendimento"],
-      weaknesses: ["Preço mais alto", "Menos variedade", "Estoque limitado"],
-      aiRecommendation: "Melhorar tempo de entrega e investir em atendimento. Manter vantagem de preço."
-    },
-    {
-      name: "Galaxy Outlet",
-      rating: 4.2,
-      sales: 89,
-      price: 1199,
-      ourPrice: 1299,
-      ranking: 5,
-      gap: "Oportunidade",
-      strengths: ["Preço agressivo", "Promoções frequentes"],
-      weaknesses: ["Reputação baixa", "Qualidade questionável", "Atendimento ruim"],
-      aiRecommendation: "Ajustar preço para R$ 1.249 e destacar qualidade superior nos anúncios."
-    },
-    {
-      name: "SmartPhone Express",
-      rating: 4.5,
-      sales: 134,
-      price: 1289,
-      ourPrice: 1299,
-      ranking: 2,
-      gap: "Neutro",
-      strengths: ["Boa reputação", "Preço competitivo", "Variedade"],
-      weaknesses: ["Descrição básica", "Imagens fracas"],
-      aiRecommendation: "Melhorar qualidade das imagens e descrição do produto para superar."
-    }
-  ];
+  const competitors: any[] = [];
 
   return (
     <div className="space-y-6">
@@ -322,27 +285,27 @@ export const CompetitorAnalysis = () => {
           <div className="grid gap-4 md:grid-cols-4">
             <MarketInsight
               title="Preço Médio Mercado"
-              value="R$ 1.279"
-              trend="up"
-              description="+3.2% vs mês anterior"
+              value="--"
+              trend="stable"
+              description="Conecte para ver dados"
             />
             <MarketInsight
               title="Nosso Ranking"
-              value="#3º"
+              value="--"
               trend="stable"
-              description="Mantido nas últimas 2 semanas"
+              description="Conecte para ver dados"
             />
             <MarketInsight
               title="Concorrentes Ativos"
-              value="12"
-              trend="up"
-              description="2 novos neste mês"
+              value="--"
+              trend="stable"
+              description="Conecte para ver dados"
             />
             <MarketInsight
               title="Market Share"
-              value="18.5%"
-              trend="up"
-              description="+2.1% de crescimento"
+              value="--"
+              trend="stable"
+              description="Conecte para ver dados"
             />
           </div>
 
@@ -374,15 +337,15 @@ export const CompetitorAnalysis = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-sm">Preço Mais Baixo</span>
-                    <span className="font-medium">R$ 1.199 (Galaxy Outlet)</span>
+                    <span className="font-medium">--</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm">Preço Mais Alto</span>
-                    <span className="font-medium">R$ 1.350 (TechStore)</span>
+                    <span className="font-medium">--</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-sm">Nosso Posicionamento</span>
-                    <span className="font-medium text-primary">Médio-Alto</span>
+                    <span className="font-medium text-primary">--</span>
                   </div>
                 </div>
               </CardContent>

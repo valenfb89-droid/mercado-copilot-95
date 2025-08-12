@@ -23,66 +23,7 @@ interface LogEntry {
 }
 
 export const IntegrationLogs = () => {
-  const logs: LogEntry[] = [
-    {
-      id: '1',
-      timestamp: '2024-01-08 14:35:22',
-      type: 'sync',
-      status: 'success',
-      message: 'Sincronização de produtos concluída',
-      details: '247 produtos sincronizados com sucesso',
-      duration: 4200,
-      itemsProcessed: 247
-    },
-    {
-      id: '2',
-      timestamp: '2024-01-08 14:30:15',
-      type: 'api_call',
-      status: 'success',
-      message: 'Análise de concorrentes executada',
-      details: 'Verificados 15 produtos concorrentes na categoria smartphones',
-      duration: 1800,
-      itemsProcessed: 15
-    },
-    {
-      id: '3',
-      timestamp: '2024-01-08 12:45:33',
-      type: 'sync',
-      status: 'warning',
-      message: 'Sincronização parcial - alguns produtos indisponíveis',
-      details: '238/250 produtos sincronizados. 12 produtos fora de catálogo no ML',
-      duration: 3600,
-      itemsProcessed: 238
-    },
-    {
-      id: '4',
-      timestamp: '2024-01-08 10:22:11',
-      type: 'error',
-      status: 'error',
-      message: 'Falha na conexão com API do Mercado Livre',
-      details: 'Timeout na requisição - Rate limit atingido. Tentativa automática em 5min',
-      duration: 30000
-    },
-    {
-      id: '5',
-      timestamp: '2024-01-08 09:15:45',
-      type: 'auth',
-      status: 'success',
-      message: 'Token de acesso renovado',
-      details: 'Autorização OAuth2 renovada automaticamente',
-      duration: 1200
-    },
-    {
-      id: '6',
-      timestamp: '2024-01-08 08:30:10',
-      type: 'sync',
-      status: 'success',
-      message: 'Sincronização automática executada',
-      details: '247 produtos atualizados, 3 novos produtos detectados',
-      duration: 3800,
-      itemsProcessed: 250
-    }
-  ];
+  const logs: LogEntry[] = [];
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -162,7 +103,7 @@ export const IntegrationLogs = () => {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm text-muted-foreground">Total Hoje</div>
-                <div className="text-2xl font-bold">24</div>
+                <div className="text-2xl font-bold">0</div>
               </div>
               <Activity className="h-8 w-8 text-muted-foreground" />
             </div>
@@ -174,7 +115,7 @@ export const IntegrationLogs = () => {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm text-muted-foreground">Sucessos</div>
-                <div className="text-2xl font-bold text-success">21</div>
+                <div className="text-2xl font-bold text-success">0</div>
               </div>
               <CheckCircle className="h-8 w-8 text-success" />
             </div>
@@ -186,7 +127,7 @@ export const IntegrationLogs = () => {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm text-muted-foreground">Avisos</div>
-                <div className="text-2xl font-bold text-warning">2</div>
+                <div className="text-2xl font-bold text-warning">0</div>
               </div>
               <AlertTriangle className="h-8 w-8 text-warning" />
             </div>
@@ -198,7 +139,7 @@ export const IntegrationLogs = () => {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm text-muted-foreground">Erros</div>
-                <div className="text-2xl font-bold text-destructive">1</div>
+                <div className="text-2xl font-bold text-destructive">0</div>
               </div>
               <AlertTriangle className="h-8 w-8 text-destructive" />
             </div>
@@ -215,48 +156,52 @@ export const IntegrationLogs = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            {logs.map((log) => (
-              <div 
-                key={log.id}
-                className="flex items-start justify-between p-4 border rounded-lg hover:bg-muted/20 transition-colors"
-              >
-                <div className="flex items-start space-x-3">
-                  <div className="mt-0.5">
-                    {getStatusIcon(log.status)}
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium">{log.message}</span>
-                      {getStatusBadge(log.status)}
-                      <Badge variant="outline" className="text-xs">
-                        {getTypeLabel(log.type)}
-                      </Badge>
+          {logs.length === 0 ? (
+            <div className="text-sm text-muted-foreground text-center py-6">Nenhuma atividade ainda.</div>
+          ) : (
+            <div className="space-y-4">
+              {logs.map((log) => (
+                <div 
+                  key={log.id}
+                  className="flex items-start justify-between p-4 border rounded-lg hover:bg-muted/20 transition-colors"
+                >
+                  <div className="flex items-start space-x-3">
+                    <div className="mt-0.5">
+                      {getStatusIcon(log.status)}
                     </div>
-                    <div className="text-sm text-muted-foreground">
-                      {log.details}
-                    </div>
-                    <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                      <div className="flex items-center">
-                        <Clock className="mr-1 h-3 w-3" />
-                        {log.timestamp}
+                    <div className="space-y-1">
+                      <div className="flex items-center space-x-2">
+                        <span className="font-medium">{log.message}</span>
+                        {getStatusBadge(log.status)}
+                        <Badge variant="outline" className="text-xs">
+                          {getTypeLabel(log.type)}
+                        </Badge>
                       </div>
-                      {log.duration && (
-                        <div>
-                          Duração: {formatDuration(log.duration)}
+                      <div className="text-sm text-muted-foreground">
+                        {log.details}
+                      </div>
+                      <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                        <div className="flex items-center">
+                          <Clock className="mr-1 h-3 w-3" />
+                          {log.timestamp}
                         </div>
-                      )}
-                      {log.itemsProcessed && (
-                        <div>
-                          {log.itemsProcessed} itens processados
-                        </div>
-                      )}
+                        {log.duration && (
+                          <div>
+                            Duração: {formatDuration(log.duration)}
+                          </div>
+                        )}
+                        {log.itemsProcessed && (
+                          <div>
+                            {log.itemsProcessed} itens processados
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
